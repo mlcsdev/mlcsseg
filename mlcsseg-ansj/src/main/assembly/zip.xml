@@ -1,0 +1,35 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+	<id>bin</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<dependencySets>
+		<dependencySet>
+			<useProjectArtifact>true</useProjectArtifact>
+			<outputDirectory>jar</outputDirectory>
+			<excludes>
+
+				<exclude>org.apache.solr:solr*</exclude>
+				<exclude>com.spatial4j:spatial4j</exclude>
+				<exclude>org.apache.lucene:lucene*</exclude>
+				<exclude>com.google.guava:guava*</exclude>
+				<exclude>commons*:commons*</exclude>
+				<exclude>org.restlet.jee:org.restlet*</exclude>
+				<exclude>org.apache.zookeeper:zookeeper*</exclude>
+				<exclude>org.noggit:noggit*</exclude>
+				<exclude>org.slf4j*:slf4j*</exclude>
+				<exclude>org.codehaus.woodstox:wstx-asl*</exclude>
+				<exclude>org.apache.httpcomponents:http*</exclude>
+			</excludes>
+		</dependencySet>
+	</dependencySets>
+	<fileSets>
+		<fileSet>
+			<directory>lib</directory>
+			<outputDirectory>jar</outputDirectory>
+		</fileSet>
+	</fileSets>
+</assembly>
