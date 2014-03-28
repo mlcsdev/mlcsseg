@@ -66,8 +66,8 @@ ResourceLoaderAware {
 		final Analyzer analyzer = new Analyzer() {
 			@Override
 			protected TokenStreamComponents createComponents(String fieldName, Reader reader) {
-				WhitespaceTokenizer tokenizer =  new WhitespaceTokenizer(Version.LUCENE_46, reader);
-				TokenStream stream = ignoreCase ? new LowerCaseFilter(Version.LUCENE_46, tokenizer) : tokenizer;
+				WhitespaceTokenizer tokenizer =  new WhitespaceTokenizer(Version.LUCENE_45, reader);
+				TokenStream stream = ignoreCase ? new LowerCaseFilter(Version.LUCENE_45, tokenizer) : tokenizer;
 				return new TokenStreamComponents(tokenizer, stream);
 			}
 		};
@@ -78,19 +78,17 @@ ResourceLoaderAware {
 				.onUnmappableCharacter(CodingErrorAction.REPORT);
 
 		SolrSynonymParser parser = new SolrSynonymParser(true, expand,	analyzer);
+		
 		File synonymFile = new File(synonyms);
 		if (loader != null){ //first call in constructor
 			if (synonymFile.exists()) {
 				decoder.reset();
-				
-				parser.parse(new InputStreamReader(loader.openResource(synonyms),
-						decoder));
+				parser.add(new InputStreamReader(loader.openResource(synonyms)));
 			} else {
 				List<String> files = splitFileNames(synonyms);
 				for (String file : files) {
 					decoder.reset();
-					parser.parse(new InputStreamReader(loader.openResource(file),
-							decoder));
+					parser.add(new InputStreamReader(loader.openResource(file)));
 				}
 			}
 		}
