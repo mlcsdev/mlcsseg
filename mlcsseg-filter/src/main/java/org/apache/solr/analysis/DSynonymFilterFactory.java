@@ -66,8 +66,8 @@ ResourceLoaderAware {
 		final Analyzer analyzer = new Analyzer() {
 			@Override
 			protected TokenStreamComponents createComponents(String fieldName, Reader reader) {
-				WhitespaceTokenizer tokenizer =  new WhitespaceTokenizer(Version.LUCENE_45, reader);
-				TokenStream stream = ignoreCase ? new LowerCaseFilter(Version.LUCENE_45, tokenizer) : tokenizer;
+				WhitespaceTokenizer tokenizer =  new WhitespaceTokenizer(Version.LUCENE_44, reader);
+				TokenStream stream = ignoreCase ? new LowerCaseFilter(Version.LUCENE_44, tokenizer) : tokenizer;
 				return new TokenStreamComponents(tokenizer, stream);
 			}
 		};
