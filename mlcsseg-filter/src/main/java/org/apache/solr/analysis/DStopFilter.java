@@ -15,7 +15,7 @@ public class DStopFilter extends FilteringTokenFilter {
 	private final CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);
 
 	public DStopFilter(TokenStream input,	CharArraySet stopWords) {
-		super(Version.LUCENE_46, input);
+		super(Version.LUCENE_47, input);
 
 		this.stopWords = stopWords;
 	}
