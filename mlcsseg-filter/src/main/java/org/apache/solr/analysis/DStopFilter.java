@@ -7,16 +7,17 @@ import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.analysis.util.CharArraySet;
 import org.apache.lucene.analysis.util.FilteringTokenFilter;
-import org.apache.lucene.util.Version;
+
 
 public class DStopFilter extends FilteringTokenFilter {
 
 	private final CharArraySet stopWords;
 	private final CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);
 
-	public DStopFilter(TokenStream input,	CharArraySet stopWords) {
-		super(Version.LUCENE_44, input);
-
+	
+	
+	public DStopFilter(TokenStream input,	CharArraySet stopWords, boolean enablePositionIncrements) {
+		super(enablePositionIncrements, input);
 		this.stopWords = stopWords;
 	}
 

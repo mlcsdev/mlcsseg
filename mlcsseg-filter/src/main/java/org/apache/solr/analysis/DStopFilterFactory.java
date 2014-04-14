@@ -52,9 +52,9 @@ public class DStopFilterFactory extends TokenFilterFactory implements ResourceLo
 	}
 
 	@Override
-	public TokenStream create(TokenStream arg0) {
-		DStopFilter stopFilter = new DStopFilter( arg0, stopWords);
-		stopFilter.setEnablePositionIncrements(enablePositionIncrements);
+	public TokenStream create(TokenStream tokenStream) {
+		DStopFilter stopFilter = new DStopFilter( tokenStream, stopWords, enablePositionIncrements);
+//		stopFilter.setEnablePositionIncrements(enablePositionIncrements);
 		return stopFilter;
 	}
 
