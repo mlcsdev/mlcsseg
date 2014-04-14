@@ -19,14 +19,14 @@ public class DStopFilterFactory extends TokenFilterFactory implements ResourceLo
 	public DStopFilterFactory(Map<String, String> args) {
 		super(args);
 		ignoreCase = getBoolean(args, "ignoreCase", false);
-		enablePositionIncrements = getBoolean(args, "enablePositionIncrements", false);
+//		enablePositionIncrements = getBoolean(args, "enablePositionIncrements", false);
 		conf = get(args, "conf"); //paths & lastupdate
 		System.out.println("construct:::::stop::::::::::::::::::::::" + conf);
 	}
 	
 	private CharArraySet stopWords;
 	private boolean ignoreCase;
-	private boolean enablePositionIncrements;
+//	private boolean enablePositionIncrements;
 
 	private ResourceLoader loader;
 
@@ -54,7 +54,6 @@ public class DStopFilterFactory extends TokenFilterFactory implements ResourceLo
 	@Override
 	public TokenStream create(TokenStream arg0) {
 		DStopFilter stopFilter = new DStopFilter( arg0, stopWords);
-		stopFilter.setEnablePositionIncrements(enablePositionIncrements);
 		return stopFilter;
 	}
 
